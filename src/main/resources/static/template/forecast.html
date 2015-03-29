@@ -1,0 +1,38 @@
+<br/>
+<form class="form-inline" role="form">
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search" ng-model="query">
+    </div>
+    <button type="submit" class="btn btn-default" ng-click="switchForecasts()">Show {{ label }}</button>
+</form>
+<br/>
+<div>
+    <table class="table table-hover table-striped table-bordered table-responsive">
+        <thead>
+        <tr>
+            <td>City</td>
+            <td>Description</td>
+            <td>Time</td>
+            <td>Wind speed</td>
+            <td>Wind direction</td>
+            <td>Temperature min</td>
+            <td>Temperature max</td>
+            <td>Provider</td>
+            <td>Store timestamp</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="forecast in forecasts | filter:query">
+            <td>{{forecast.city}}</td>
+            <td>{{forecast.description}}</td>
+            <td>{{forecast.time}}</td>
+            <td>{{forecast.wind.speed}}</td>
+            <td>{{forecast.wind.direction}}</td>
+            <td>{{forecast.temperature.min}}</td>
+            <td>{{forecast.temperature.max}}</td>
+            <td>{{forecast.provider}}</td>
+            <td>{{forecast.storeTime || "N/A"}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
