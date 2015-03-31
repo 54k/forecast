@@ -20,12 +20,18 @@ public final class City {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         City city = (City) o;
 
-        if (!name.equals(city.name)) return false;
+        if (!name.equals(city.name)) {
+            return false;
+        }
         return zipCode.equals(city.zipCode);
     }
 

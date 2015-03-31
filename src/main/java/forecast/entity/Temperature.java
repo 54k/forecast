@@ -7,6 +7,7 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class Temperature {
+
     @JsonView({JsonViews.Stored.class, JsonViews.Current.class})
     private float min = 0;
     @JsonView({JsonViews.Stored.class, JsonViews.Current.class})

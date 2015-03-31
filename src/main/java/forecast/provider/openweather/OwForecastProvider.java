@@ -23,10 +23,11 @@ public class OwForecastProvider extends RestTemplate implements ForecastProvider
     public Collection<Forecast> getCityForecasts(City city) {
         ResponseEntity<OwForecastEntry> response = getForEntity(QUERY_URL,
                 OwForecastEntry.class, city.getName());
-        if (!response.getStatusCode().is2xxSuccessful()) {
+        OwForecastEntry entry = response.getBody();
+        if (!response.getStatusCode().is2xxSuccessful() || entry == null) {
             throw new ForecastProviderException("Received unsuccessful response from OpenWeather provider");
         }
-        return extractForecasts(response.getBody());
+        return extractForecasts(entry);
     }
 
     private Collection<Forecast> extractForecasts(OwForecastEntry entry) {
